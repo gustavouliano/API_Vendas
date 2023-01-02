@@ -1,0 +1,46 @@
+{
+  "name": "api-vendas",
+  "version": "1.0.0",
+  "description": "npm init -y\r #Instala o Typescript, ts-node-dev para fazer reload, tipagem, e os paths\r npm i -D typescript ts-node-dev @types/node tsconfig-paths",
+  "main": "./src/http/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/http/server.ts",
+    "lint": "eslint . --ext .ts",
+    "lint-fix": "estlint . --ext .ts --fix",
+    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.14",
+    "@types/joi": "^17.2.3",
+    "@types/jsonwebtoken": "^9.0.0",
+    "@types/multer": "^1.4.7",
+    "@types/node": "^18.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
+    "eslint": "^8.28.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.0",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.1.0",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "celebrate": "^15.0.1",
+    "cors": "^2.8.5",
+    "date-fns": "^2.29.3",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^9.0.0",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.8.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.29"
+  }
+}
