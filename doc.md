@@ -30,6 +30,8 @@ npm i -D @types/jsonwebtoken
 yarn add multer | Biblioteca para uploads
 yarn add -D @types/multer 
 yarn add date-fns
+yarn add nodemailer
+yarn add -D @types/nodemailer
 
 # Pra criar o Docker
 docker run --name postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres

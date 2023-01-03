@@ -1,3 +1,4 @@
+import EtherealMail from "@config/mail/EtherealMail";
 import AppError from "@shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
 import UsersRepository from "../typeorm/repositories/UsersRepository";
@@ -19,6 +20,10 @@ export default class SendForgotPasswordEmailService {
         }
 
         const userToken = await userTokensRepository.generate(user.id);
-        console.log(userToken);
+        // console.log(userToken);
+        await EtherealMail.sendMail({
+            to: email,
+            body: `Received password reset request: ${userToken.token}`
+        })
     }
 }
