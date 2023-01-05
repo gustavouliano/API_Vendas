@@ -1,8 +1,25 @@
 import nodemailer from 'nodemailer';
+import { HandlebarsMailTemplate } from './HandlebarsMailTemplate';
+
+interface IMailContact {
+    name: string;
+    email: string;
+}
+
+interface ITemplateVariable {
+    [key: string]: string;
+}
+
+interface IParseMailTemplate {
+    file: string;
+    variables: ITemplateVariable;
+}
 
 interface ISendMail {
-    to: string;
-    body: string;
+    to: IMailContact;
+    from?: IMailContact;
+    subject: string;
+    templateData: IParseMailTemplate;
 }
 
 /**
@@ -11,8 +28,10 @@ interface ISendMail {
  */
 export default class EtherealMail {
 
-    public static async sendMail({ to, body }: ISendMail): Promise<void> {
+    public static async sendMail({ to, from, subject, templateData }: ISendMail): Promise<void> {
         const account = await nodemailer.createTestAccount();
+
+        const handlebarsMailTemplate = new HandlebarsMailTemplate();
 
         const transporter = nodemailer.createTransport({
             host: account.smtp.host,
@@ -23,16 +42,23 @@ export default class EtherealMail {
                 pass: account.pass
             }
         });
-
-        const message = await transporter.sendMail({
-            from: 'teamtest@apivendas.com',
-            to,
-            subject: 'Recuperação de senha',
-            text: body
+        transporter.sendMail({
+            from: {
+                name: from?.name || 'Equipe API Vendas',
+                address: from?.email || 'equipe@apivendas.com'
+            },
+            to: {
+                name: to.name,
+                address: to.email
+            },
+            subject,
+            html: await handlebarsMailTemplate.parse(templateData)
         })
-        
-        console.log('Message sent: %s', message.messageId);
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
+        .then((message) => {
+            console.log('Message sent: %s', message.messageId);
+            console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
+        })
+
     }
 
 }

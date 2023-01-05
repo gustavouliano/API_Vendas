@@ -32,6 +32,7 @@ yarn add -D @types/multer
 yarn add date-fns
 yarn add nodemailer
 yarn add -D @types/nodemailer
+yarn add handlebars
 
 # Pra criar o Docker
 docker run --name postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
