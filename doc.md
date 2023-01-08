@@ -42,6 +42,7 @@ docker run --name postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 yarn typeorm migration:create -n CreateProducts
 yarn typeorm migration:create -n CreateUsers
 yarn typeorm migration:create -n CreateUserTokens
+yarn typeorm migration:create -n CreateCustomers
 
 # Rodar as migrações
 yarn typeorm migration:run

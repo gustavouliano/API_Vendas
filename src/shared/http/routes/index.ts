@@ -4,6 +4,7 @@ import { usersRoutes } from '@modules/users/routes/users.routes';
 import { sessionsRouter } from '@modules/users/routes/sessions.routes';
 import { passwordRouter } from '@modules/users/routes/password.routes';
 import { profileRouter } from '@modules/users/routes/profile.routes';
+import customersRouter from '@modules/customers/routes/customers.routes';
 
 const routes = Router();
 
@@ -17,6 +18,8 @@ routes.use('/sessions', sessionsRouter);
 routes.use('/password', passwordRouter);
 // Rotas de profile do usuário. (atualizar os dados)
 routes.use('/profile', profileRouter);
+// Rotas de clientes
+routes.use('/customers', customersRouter);
 
 routes.get('/', (req: Request, res: Response) => {
     return res.json({ msg: 'Foi!' });
