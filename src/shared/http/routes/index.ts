@@ -5,6 +5,7 @@ import { sessionsRouter } from '@modules/users/routes/sessions.routes';
 import { passwordRouter } from '@modules/users/routes/password.routes';
 import { profileRouter } from '@modules/users/routes/profile.routes';
 import customersRouter from '@modules/customers/routes/customers.routes';
+import ordersRouter from '@modules/orders/routes/orders.routes';
 
 const routes = Router();
 
@@ -20,6 +21,8 @@ routes.use('/password', passwordRouter);
 routes.use('/profile', profileRouter);
 // Rotas de clientes
 routes.use('/customers', customersRouter);
+// Rotas de pedidos
+routes.use('/orders', ordersRouter);
 
 routes.get('/', (req: Request, res: Response) => {
     return res.json({ msg: 'Foi!' });

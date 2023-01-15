@@ -1,6 +1,6 @@
 
 import OrdersProducts from '@modules/orders/typeorm/entities/OrdersProducts';
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('products')
 class Product {
@@ -8,7 +8,7 @@ class Product {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @ManyToOne(() => OrdersProducts, order_products => order_products.product)
+    @OneToMany(() => OrdersProducts, order_products => order_products.product)
     order_products: OrdersProducts[];
 
     @Column()
