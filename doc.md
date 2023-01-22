@@ -61,3 +61,16 @@ yarn typeorm migration:run
     "@types",
     "./node_modules/@types"
 ],
+
+# Docker
+docker ps - Containers em execução
+
+# Redis
+docker run --name redis -p 6379:6379 -d -t redis:alpine
+npm i redis ioredis
+npm i @types/redis @types/ioredis -D
+
+# Para consultar os dados no Redis 
+docker exec -it redis sh
+redis-cli
+Acessar os dados pelos comandos (get/set)
