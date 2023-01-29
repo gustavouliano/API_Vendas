@@ -5,7 +5,7 @@ import path from 'path';
 class DiskStorageProvider {
     
     public async saveFile(file: string): Promise<string> {
-        // Movendo da pasta upload para temp
+        // Movendo da pasta temp para upload
         await fs.promises.rename(
             path.resolve(uploadConfig.tmpFolder, file),
             path.resolve(uploadConfig.directory, file)
