@@ -1,4 +1,4 @@
-import RedisCache from "@shared/cache/RedisCache";
+import redisCache from "@shared/cache/RedisCache";
 import AppError from "@shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
 import Product from "../typeorm/entities/Product";
@@ -14,7 +14,6 @@ export class CreateProductService {
 
     public async execute({name, price, quantity}: IRequest): Promise<Product>{
         const productsRepository = getCustomRepository(ProductsRepository);
-        const redisCache = new RedisCache();
         
         const productExists = await productsRepository.findByName(name);
         if (productExists){
