@@ -1,7 +1,3 @@
-
-/**
- * Classe de Error customizadas.
- */
 class AppError {
     
     public readonly message: string;
