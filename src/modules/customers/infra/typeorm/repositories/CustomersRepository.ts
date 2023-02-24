@@ -42,6 +42,14 @@ class CustomersRepository implements ICustomersRepository {
     public async save(customer: Customer): Promise<Customer> {
         return await this.ormRepository.save(customer);
     }
+
+    public async remove(customer: Customer): Promise<Customer> {
+        return await this.ormRepository.remove(customer);
+    }
+
+    public createQueryBuilder() {
+        return this.ormRepository.createQueryBuilder();
+    }
 }
 
 export default CustomersRepository;
