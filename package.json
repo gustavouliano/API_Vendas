@@ -4,7 +4,7 @@
   "description": "npm init -y\r #Instala o Typescript, ts-node-dev para fazer reload, tipagem, e os paths\r npm i -D typescript ts-node-dev @types/node tsconfig-paths",
   "main": "./src/http/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "lint": "eslint . --ext .ts",
@@ -26,6 +26,7 @@
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
     "@types/ioredis": "^4.28.10",
+    "@types/jest": "^29.4.0",
     "@types/joi": "^17.2.3",
     "@types/jsonwebtoken": "^9.0.0",
     "@types/multer": "^1.4.7",
@@ -37,8 +38,10 @@
     "babel-plugin-module-resolver": "^5.0.0",
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
     "eslint": "^8.28.0",
+    "jest": "^29.4.3",
     "nodemon": "^2.0.20",
     "prettier": "^2.8.0",
+    "ts-jest": "^29.0.5",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.1.0",
     "typescript": "^4.9.3"
