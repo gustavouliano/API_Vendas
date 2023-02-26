@@ -10,4 +10,11 @@ export default {
     '**/*.test.ts'    
   ],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {prefix: '<rootDir>/'}),
+//   collectCoverage: true,
+//   collectCoverageFrom: ['<rootDir>/src/modules/**/services/*.ts'],
+//   coverageDirectory: 'coverage',
+//   coverageReporters: [
+//     'text-summary',
+//     'lcov'
+//   ],
 };

@@ -6,7 +6,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "module": "commonjs",
-    // "rootDir": "src",
     "baseUrl": "./",
     "paths": {
         "@shared/*": ["src/shared/*"],
