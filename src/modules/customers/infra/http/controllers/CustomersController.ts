@@ -9,9 +9,11 @@ import { container }  from 'tsyringe';
 export class CustomersController {
 
     public async index(req: Request, res: Response): Promise<Response> {
+        const page = req.query.page ?  Number(req.query.page) : 1;
+        const limit = req.query.limit ? Number(req.query.limit) : 15;
         const listCustomerSerivice = new ListCustomerService();
         
-        const customers = await listCustomerSerivice.execute();
+        const customers = await listCustomerSerivice.execute({ page, limit });
         return res.json(customers);
     }
 

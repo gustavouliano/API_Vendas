@@ -2,6 +2,11 @@ import { getCustomRepository } from "typeorm";
 import { Customer } from "../infra/typeorm/entities/Customer";
 import CustomersRepository from "../infra/typeorm/repositories/CustomersRepository";
 
+interface SearchParams {
+    page: number;
+    limit: number;
+}
+
 interface IPaginateCustomer {
     from: number;
     to: number;
@@ -16,10 +21,12 @@ interface IPaginateCustomer {
 
 export class ListCustomerService {    
 
-    public async execute(): Promise<IPaginateCustomer> {
-        const customersRepository = getCustomRepository(CustomersRepository);
+    public async execute({page, limit}: SearchParams): Promise<IPaginateCustomer> {
+        const take = limit;
+        const skip = (Number(page) - 1) * take;
+        const customersRepository = new CustomersRepository();
         
-        const customers = await customersRepository.createQueryBuilder().paginate();
+        const customers = await customersRepository.findAll({ page, skip, take });
         return customers as IPaginateCustomer;
     }
 }
